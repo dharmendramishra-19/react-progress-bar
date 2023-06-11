@@ -1,10 +1,16 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-export function ProgressBar({progress}:any){
+type IProps = {
+  progress: number;
+};
+
+const ProgressBar: React.FC<IProps> = ({ progress }) => {
   return (
     <div className="progress-bar">
       <div className="progress-bar-fill"></div>
     </div>
-  )
-}
+  );
+};
+
+export default ProgressBar;
