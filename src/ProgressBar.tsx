@@ -1,14 +1,14 @@
 import React from 'react';
-import './style.css';
+import "./progress-bar.css"
 
 type IProps = {
   progress: number;
 };
 
-const ProgressBar: React.FC<IProps> = ({ progress }) => {
+const ProgressBar: React.FC<IProps> = ({ progress=0 }) => {
   return (
     <div className="progress-bar">
-      <div className="progress-bar-fill"></div>
+      <div className="progress-bar-fill" style={{transform: `translateX(${progress - 100}%)`}}></div>
     </div>
   );
 };
