@@ -1,11 +1,11 @@
 import * as React from 'react';
 import ProgressBar from './ProgressBar';
-import "./style.css";
+import './style.css';
 
-const timerDuration = 1 * 1000;
-const totalDuration = 10 * 1000;
-const totalCycle = totalDuration / timerDuration;
-const progressEachCycle = (timerDuration / totalDuration) * 100;
+const TIMERDURATION = 1 * 1000;
+const TOTALDURATION = 10 * 1000;
+const TOTALCYCLE = TOTALDURATION / TIMERDURATION;
+const PROGRESSEACHCYCLE = (TIMERDURATION / TOTALDURATION) * 100;
 
 export default function App() {
   const [progress, setProgress] = React.useState(0);
@@ -13,9 +13,16 @@ export default function App() {
   const cycleCompleted = React.useRef(0);
 
   React.useEffect(()=>{
-    
+    timerRef.current =
+    setInterval(()=>{
+      setProgress((prevProgress)=>prevProgress + PROGRESSEACHCYCLE);
+  cycleCompleted.current +=1
+  if(cycleCompleted.current>=10) clearInterval(timerRef.current)
+    }, TIMERDURATION)
+
+  return () => {
+    clearInterval(timerRef.current)
+  }
   }, [])
-  return (
-    <ProgressBar progress={10} />
-  );
+  return <ProgressBar progress={progress} />;
 }
