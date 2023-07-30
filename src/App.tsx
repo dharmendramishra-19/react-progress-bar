@@ -1,6 +1,6 @@
 import * as React from 'react';
-import ProgressBar from './ProgressBar';
 import './style.css';
+import ProgressBar from './ProgressBar/ProgressBar';
 
 const TIMERDURATION = 1 * 1000;
 const TOTALDURATION = 10 * 1000;
